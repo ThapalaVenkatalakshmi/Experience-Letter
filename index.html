@@ -4,134 +4,175 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document Validation - Demo</title>
+<title>Document Validation Details</title>
 
 <style>
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    padding: 30px 15px;
-    color: #383838;
+    margin: 0;
+    padding: 16px;
+    background: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
 }
 
-.container {
-    width: 100%;
-    max-width: 640px;
-    margin: 180px auto 30px;
+.page {
+    max-width: 920px;
+    margin: auto;
     background: white;
-    border-radius: 20px;
+    border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
 }
 
-.logo {
-    text-align: center;
-    padding: 42px 10px;
-    font-size: 43px;
-    font-weight: bold;
-    color: #e51d3b;
-    letter-spacing: -2px;
+.brand {
+    height: 198px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.demo {
-    text-align: center;
-    color: #a21d1d;
-    background: #fff0f0;
-    padding: 8px;
-    font-size: 12px;
+.brand-name {
+    color: #df1f32;
+    font-size: 68px;
     font-weight: bold;
+    letter-spacing: -4px;
 }
 
 .heading {
     background: #191919;
     color: white;
     text-align: center;
-    padding: 23px 10px;
-    font-size: 25px;
+    padding: 32px 15px;
+    font-size: 36px;
     font-weight: bold;
 }
 
 .row {
     display: grid;
-    grid-template-columns: 45% 55%;
-    padding: 23px 30px;
-    border-bottom: 1px solid #eeeeee;
-    font-size: 21px;
-    line-height: 1.7;
-    overflow-wrap: anywhere;
+    grid-template-columns: 46% 54%;
+    padding: 30px 46px;
+    border-bottom: 1px solid #e6e6e6;
+    align-items: center;
+    min-height: 116px;
+    font-size: 30px;
+    line-height: 1.55;
 }
 
-.label {
+.row-label {
     font-weight: bold;
 }
 
-.value {
+.row-value {
     color: #555;
+}
+
+.first-row {
+    min-height: 170px;
 }
 
 .valid {
     display: inline-block;
-    background: #27ae60;
+    background: #28a966;
     color: white;
-    padding: 5px 17px;
-    border-radius: 7px;
+    padding: 8px 24px;
+    border-radius: 10px;
     font-weight: bold;
-    font-size: 19px;
     white-space: nowrap;
 }
 
-.note {
-    text-align: center;
-    padding: 35px 35px;
-    color: #888;
-    font-size: 17px;
-    line-height: 1.8;
-    background: #fafafa;
+.verification {
+    align-items: start;
 }
 
-.note strong {
+.footer {
+    background: #fafafa;
+    color: #929292;
+    text-align: center;
+    padding: 48px 35px;
+    font-size: 25px;
+    line-height: 1.7;
+}
+
+.footer strong {
     color: #777;
 }
 
-@media(max-width:480px) {
+.print-wrap {
+    text-align: center;
+    margin: 20px;
+}
+
+.print-button {
+    background: #222;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 10mm;
+    }
+
     body {
-        padding: 15px 10px;
+        padding: 0;
+        background: white;
     }
 
-    .container {
-        margin-top: 190px;
-        border-radius: 17px;
+    .page {
+        max-width: none;
+        border-radius: 0;
+        box-shadow: none;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
     }
 
-    .logo {
-        font-size: 39px;
-        padding: 38px 10px;
+    .print-wrap {
+        display: none;
+    }
+
+    .brand {
+        height: 150px;
     }
 
     .heading {
-        font-size: 22px;
+        padding: 25px;
+        font-size: 28px;
     }
 
     .row {
-        grid-template-columns: 45% 55%;
-        padding: 20px 22px;
-        font-size: 18px;
+        padding: 20px 30px;
+        font-size: 20px;
     }
 
-    .valid {
+    .footer {
+        font-size: 17px;
+        padding: 30px;
+    }
+}
+
+@media(max-width:600px) {
+    .row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 20px;
+        font-size: 21px;
+    }
+
+    .brand-name {
+        font-size: 48px;
+    }
+
+    .footer {
         font-size: 16px;
-        padding: 5px 12px;
-    }
-
-    .note {
-        padding: 30px 22px;
-        font-size: 15px;
     }
 }
 </style>
@@ -139,42 +180,42 @@ body {
 
 <body>
 
-<div class="container">
+<div class="page">
 
-    <div class="demo">
-        DEMO PREVIEW — NOT AN OFFICIAL VERIFICATION
-    </div>
-
-    <div class="logo">
-        grassroots
+    <div class="brand">
+        <div class="brand-name">grassroots</div>
     </div>
 
     <div class="heading">
         Document Validation Details
     </div>
 
-    <div class="row">
-        <div class="label">
+    <div class="row first-row">
+        <div class="row-label">
             Document<br>Authenticity
         </div>
-        <div class="value">
+
+        <div class="row-value">
             <span class="valid">Valid Document</span>
         </div>
     </div>
 
     <div class="row">
-        <div class="label">Document Type</div>
-        <div class="value">Experience Letter</div>
+        <div class="row-label">Document Type</div>
+        <div class="row-value">Experience Letter</div>
     </div>
 
     <div class="row">
-        <div class="label">Document Owner</div>
-        <div class="value">Sample Employee</div>
+        <div class="row-label">Document Owner</div>
+        <div class="row-value">
+            Thapala Venkatalakshmi
+        </div>
     </div>
 
-    <div class="row">
-        <div class="label">Verification Details</div>
-        <div class="value">
+    <div class="row verification">
+        <div class="row-label">Verification Details</div>
+
+        <div class="row-value">
             Joined on 2024-06-25;<br>
             Relieved on 2026-09-06<br>
             with designation as<br>
@@ -183,21 +224,33 @@ body {
     </div>
 
     <div class="row">
-        <div class="label">
+        <div class="row-label">
             Document<br>Generation Date
         </div>
-        <div class="value">
+
+        <div class="row-value">
             2026-10-22 16:08:12 IST
         </div>
     </div>
 
-    <div class="note">
-        ** Cross check the above Document
-        Generation Date with the download
-        date mentioned in the document above
-        the QR Code.
+    <div class="footer">
+        ** Cross check the above Document Generation Date with<br>
+        the download date mentioned in the document above the<br>
+        QR Code.<br>
 
-    
+        This verification result will be published only by<br>
+
+        <strong>https://grssl.com</strong>.
+        Cross verify the URL domain generating<br>
+        the verification result.
+    </div>
+
+</div>
+
+<div class="print-wrap">
+    <button class="print-button" onclick="window.print()">
+        Print
+    </button>
 </div>
 
 </body>
