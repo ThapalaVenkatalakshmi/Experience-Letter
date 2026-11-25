@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Validation Details</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px 15px;
+    background: #f4f5f7;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+.header {
+    background: #191919;
+    color: #fff;
+    text-align: center;
+    padding: 35px 15px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.section {
+    padding: 35px 5%;
+    border-bottom: 1px solid #ddd;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 15px;
+    padding: 18px 0;
+    font-size: 21px;
+    line-height: 1.6;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.value {
+    color: #555;
+}
+
+.status {
+    display: inline-block;
+    background: #26AE60;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.preview-note {
+    padding: 15px;
+    text-align: center;
+    font-size: 13px;
+    color: #777;
+}
+
+@media(max-width:600px) {
+    .header {
+        font-size: 24px;
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+        font-size: 17px;
+        gap: 5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        Document Validation Details
+    </div>
+
+    <div class="section">
+
+        <div class="row">
+            <div class="label">Document Authenticity</div>
+            <div class="value">
+                <span class="status">Valid Document</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="label">Document Type</div>
+            <div class="value">Experience Letter</div>
+        </div>
+
+        <div class="row">
+            <div class="label">Document Owner</div>
+            <div class="value">Thapala Venkatalakshmi</div>
+        </div>
+
+        <div class="row">
+            <div class="label">Verification Details</div>
+            <div class="value">
+                Joined on 2024-06-25;<br>
+                Relieved on 2026-09-06<br>
+                with designation as MIS Executive
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="label">Document Generation Date</div>
+            <div class="value">
+                2026-10-22 16:08:12 IST
+            </div>
+        </div>
+
+    </div>
+
+    <div class="preview-note">
+        Preview only – Official verification must be confirmed by the company.
+    </div>
+
+</div>
+
+</body>
+</html>
