@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document Validation Details</title>
+
+<title>Grassroots - Document Validation</title>
 
 <style>
 * {
@@ -13,74 +15,82 @@
 body {
     margin: 0;
     padding: 30px 15px;
-    background: #f4f5f7;
     font-family: Arial, sans-serif;
+    background: #f4f6f9;
     color: #333;
 }
 
 .container {
-    max-width: 1100px;
-    margin: auto;
-    background: #fff;
-    border: 1px solid #ddd;
+    max-width: 850px;
+    margin: 30px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 
-.header {
-    background: #191919;
-    color: #fff;
+h1 {
     text-align: center;
-    padding: 35px 15px;
-    font-size: 32px;
-    font-weight: bold;
+    color: #1d3557;
+    margin-bottom: 8px;
+    font-size: 28px;
 }
 
-.section {
-    padding: 35px 5%;
-    border-bottom: 1px solid #ddd;
-}
-
-.row {
-    display: grid;
-    grid-template-columns: 40% 60%;
-    gap: 15px;
-    padding: 18px 0;
+h2 {
+    text-align: center;
+    color: #444;
     font-size: 21px;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #d9dfe7;
+    padding: 15px;
+    text-align: left;
+    font-size: 15px;
     line-height: 1.6;
 }
 
-.label {
+th {
+    width: 38%;
+    background: #f0f3f7;
+    color: #222;
     font-weight: bold;
 }
 
-.value {
-    color: #555;
+td {
+    background: #fff;
 }
 
-.status {
-    display: inline-block;
-    background: #26AE60;
-    color: white;
-    padding: 8px 18px;
-    border-radius: 5px;
+.valid {
+    color: #16803c;
     font-weight: bold;
 }
 
-.preview-note {
-    padding: 15px;
-    text-align: center;
-    font-size: 13px;
-    color: #777;
-}
-
-@media(max-width:600px) {
-    .header {
-        font-size: 24px;
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        margin: 10px auto;
     }
 
-    .row {
-        grid-template-columns: 1fr;
-        font-size: 17px;
-        gap: 5px;
+    th, td {
+        padding: 10px;
+        font-size: 13px;
+        overflow-wrap: anywhere;
+    }
+
+    th {
+        width: 40%;
+    }
+
+    h1 {
+        font-size: 24px;
     }
 }
 </style>
@@ -90,50 +100,42 @@ body {
 
 <div class="container">
 
-    <div class="header">
-        Document Validation Details
-    </div>
+    <h1>Grassroots</h1>
 
-    <div class="section">
+    <h2>Document Validation Details</h2>
 
-        <div class="row">
-            <div class="label">Document Authenticity</div>
-            <div class="value">
-                <span class="status">Valid Document</span>
-            </div>
-        </div>
+    <table>
 
-        <div class="row">
-            <div class="label">Document Type</div>
-            <div class="value">Experience Letter</div>
-        </div>
+        <tr>
+            <th>Document Authenticity</th>
+            <td class="valid">Valid Document</td>
+        </tr>
 
-        <div class="row">
-            <div class="label">Document Owner</div>
-            <div class="value">Thapala Venkatalakshmi</div>
-        </div>
+        <tr>
+            <th>Document Type</th>
+            <td>Experience Letter</td>
+        </tr>
 
-        <div class="row">
-            <div class="label">Verification Details</div>
-            <div class="value">
+        <tr>
+            <th>Document Owner</th>
+            <td>Thapala Venkatalakshmi</td>
+        </tr>
+
+        <tr>
+            <th>Verification Details</th>
+            <td>
                 Joined on 2024-06-25;<br>
-                Relieved on 2026-09-06<br>
-                with designation as MIS Executive
-            </div>
-        </div>
+                Relieved on 2026-09-06
+                with designation as Process Executive
+            </td>
+        </tr>
 
-        <div class="row">
-            <div class="label">Document Generation Date</div>
-            <div class="value">
-                2026-10-22 16:08:12 IST
-            </div>
-        </div>
+        <tr>
+            <th>Document Generation Date</th>
+            <td>2026-10-22 16:08:12 IST</td>
+        </tr>
 
-    </div>
-
-    <div class="preview-note">
-        Preview only – Official verification must be confirmed by the company.
-    </div>
+    </table>
 
 </div>
 
