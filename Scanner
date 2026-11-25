@@ -4,10 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GRSSL Scanner</title>
+
+    <script src="https://unpkg.com/html5-qrcode"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        h2 {
+            color: #222;
+        }
+
+        #reader {
+            width: 100%;
+            max-width: 350px;
+            margin: 20px auto;
+        }
+
+        button {
+            padding: 12px 22px;
+            background: #1769aa;
+            color: white;
+            border: none;
+            border-radius: 6px;
+        }
+    </style>
 </head>
+
 <body>
 
-    <h1>https://www.grssl.com</h1>
+    <h2>https://www.grssl.com</h2>
+    <h3>Document Scanner</h3>
+
+    <div id="reader"></div>
+
+    <script>
+        function onScanSuccess(decodedText) {
+            window.location.href = decodedText;
+        }
+
+        const scanner = new Html5QrcodeScanner(
+            "reader",
+            { fps: 10, qrbox: 250 }
+        );
+
+        scanner.render(onScanSuccess);
+    </script>
 
 </body>
 </html>
