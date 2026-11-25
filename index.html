@@ -4,9 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Document Validation Details</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -20,13 +22,16 @@ body {
 }
 
 .page {
+    width: 100%;
     max-width: 920px;
     margin: auto;
-    background: white;
-    border-radius: 28px;
     overflow: hidden;
+    background: #fff;
+    border-radius: 28px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
 }
+
+/* LOGO */
 
 .brand {
     height: 198px;
@@ -37,63 +42,82 @@ body {
 
 .brand-name {
     color: #df1f32;
-    font-size: 68px;
+    font-size: clamp(42px, 8vw, 68px);
     font-weight: bold;
     letter-spacing: -4px;
 }
 
+/* HEADING */
+
 .heading {
+    min-height: 112px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
     background: #191919;
     color: white;
     text-align: center;
-    padding: 32px 15px;
-    font-size: 36px;
+    font-size: clamp(20px, 4vw, 36px);
     font-weight: bold;
 }
+
+/* ROW DETAILS */
 
 .row {
     display: grid;
     grid-template-columns: 46% 54%;
+    align-items: center;
     padding: 30px 46px;
     border-bottom: 1px solid #e6e6e6;
-    align-items: center;
     min-height: 116px;
-    font-size: 30px;
+    font-size: clamp(17px, 3.2vw, 30px);
     line-height: 1.55;
-}
-
-.row-label {
-    font-weight: bold;
-}
-
-.row-value {
-    color: #555;
 }
 
 .first-row {
     min-height: 170px;
 }
 
+.row-label {
+    font-weight: bold;
+    color: #333;
+    min-width: 0;
+}
+
+.row-value {
+    color: #555;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+/* GREEN VALID DOCUMENT */
+
 .valid {
     display: inline-block;
-   background: #27AE61;
+    background: #27AE61;
     color: white;
-    padding: 8px 24px;
     border-radius: 10px;
+    padding: 8px 24px;
     font-weight: bold;
+    line-height: 1.5;
     white-space: nowrap;
 }
+
+/* VERIFICATION DETAILS */
 
 .verification {
     align-items: start;
 }
 
+/* FOOTER */
+
 .footer {
     background: #fafafa;
     color: #929292;
     text-align: center;
-    padding: 48px 35px;
-    font-size: 25px;
+    padding: 48px 35px 42px;
+    font-size: clamp(13px, 2.7vw, 25px);
     line-height: 1.7;
 }
 
@@ -101,22 +125,82 @@ body {
     color: #777;
 }
 
+/* PRINT BUTTON */
+
 .print-wrap {
+    max-width: 920px;
+    margin: 18px auto;
     text-align: center;
-    margin: 20px;
 }
 
 .print-button {
+    border: none;
+    border-radius: 7px;
+    padding: 12px 28px;
     background: #222;
     color: white;
-    border: none;
-    padding: 12px 30px;
-    font-size: 18px;
+    font-size: 17px;
     cursor: pointer;
-    border-radius: 7px;
 }
 
+/* MOBILE VIEW */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 8px;
+    }
+
+    .page {
+        border-radius: 16px;
+    }
+
+    .brand {
+        height: 135px;
+    }
+
+    .brand-name {
+        font-size: 42px;
+    }
+
+    .heading {
+        min-height: 85px;
+        font-size: 18px;
+        padding: 20px 5px;
+        white-space: nowrap;
+    }
+
+    .row {
+        display: grid;
+        grid-template-columns: 46% 54%;
+        padding: 20px 14px;
+        gap: 0;
+        font-size: 17px;
+        line-height: 1.5;
+        min-height: 90px;
+    }
+
+    .first-row {
+        min-height: 120px;
+    }
+
+    .valid {
+        font-size: 14px;
+        padding: 8px 10px;
+        white-space: nowrap;
+    }
+
+    .footer {
+        font-size: 13px;
+        padding: 25px 12px;
+    }
+
+}
+
+/* PRINT SETTINGS */
+
 @media print {
+
     @page {
         size: A4 portrait;
         margin: 10mm;
@@ -129,6 +213,7 @@ body {
 
     .page {
         max-width: none;
+        width: 100%;
         border-radius: 0;
         box-shadow: none;
         print-color-adjust: exact;
@@ -144,76 +229,98 @@ body {
     }
 
     .heading {
-        padding: 25px;
+        min-height: 85px;
         font-size: 28px;
     }
 
     .row {
         padding: 20px 30px;
         font-size: 20px;
+        min-height: 82px;
+    }
+
+    .first-row {
+        min-height: 120px;
     }
 
     .footer {
+        padding: 30px 35px;
         font-size: 17px;
-        padding: 30px;
     }
+
 }
 
-@media(max-width:600px) {
-    .row {
-        grid-template-columns: 1fr;
-        gap: 8px;
-        padding: 20px;
-        font-size: 21px;
-    }
-
-    .brand-name {
-        font-size: 48px;
-    }
-
-    .footer {
-        font-size: 16px;
-    }
-}
 </style>
 </head>
 
 <body>
 
-<div class="page">
+<main class="page">
 
-    <div class="brand">
+    <!-- GRASSROOTS LOGO -->
+
+    <header class="brand">
         <div class="brand-name">grassroots</div>
-    </div>
+    </header>
 
-    <div class="heading">
+    <!-- MAIN HEADING -->
+
+    <section class="heading">
         Document Validation Details
-    </div>
+    </section>
 
-    <div class="row first-row">
+    <!-- DOCUMENT AUTHENTICITY -->
+
+    <section class="row first-row">
+
         <div class="row-label">
-            Document<br>Authenticity
+            Document<br>
+            Authenticity
         </div>
 
         <div class="row-value">
-            <span class="valid">Valid Document</span>
+            <span class="valid">
+                Valid Document
+            </span>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="row-label">Document Type</div>
-        <div class="row-value">Experience Letter</div>
-    </div>
+    </section>
 
-    <div class="row">
-        <div class="row-label">Document Owner</div>
+    <!-- DOCUMENT TYPE -->
+
+    <section class="row">
+
+        <div class="row-label">
+            Document Type
+        </div>
+
+        <div class="row-value">
+            Experience Letter
+        </div>
+
+    </section>
+
+    <!-- DOCUMENT OWNER -->
+
+    <section class="row">
+
+        <div class="row-label">
+            Document Owner
+        </div>
+
         <div class="row-value">
             Thapala Venkatalakshmi
         </div>
-    </div>
 
-    <div class="row verification">
-        <div class="row-label">Verification Details</div>
+    </section>
+
+    <!-- VERIFICATION DETAILS -->
+
+    <section class="row verification">
+
+        <div class="row-label">
+            Verification Details
+        </div>
 
         <div class="row-value">
             Joined on 2024-06-25;<br>
@@ -221,19 +328,28 @@ body {
             with designation as<br>
             Process Executive
         </div>
-    </div>
 
-    <div class="row">
+    </section>
+
+    <!-- DOCUMENT GENERATION DATE -->
+
+    <section class="row">
+
         <div class="row-label">
-            Document<br>Generation Date
+            Document<br>
+            Generation Date
         </div>
 
         <div class="row-value">
             2026-10-22 16:08:12 IST
         </div>
-    </div>
 
-    <div class="footer">
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
         ** Cross check the above Document Generation Date with<br>
         the download date mentioned in the document above the<br>
         QR Code.<br>
@@ -243,14 +359,19 @@ body {
         <strong>https://grssl.com</strong>.
         Cross verify the URL domain generating<br>
         the verification result.
-    </div>
 
-</div>
+    </footer>
+
+</main>
+
+<!-- PRINT BUTTON -->
 
 <div class="print-wrap">
+
     <button class="print-button" onclick="window.print()">
         Print
     </button>
+
 </div>
 
 </body>
