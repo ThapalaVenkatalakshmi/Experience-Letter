@@ -29,19 +29,25 @@ body {
     box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 
+/* Grassroots Heading */
 h1 {
     text-align: center;
-    color: #1d3557;
-    margin-bottom: 8px;
-    font-size: 28px;
+    color: red;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
+/* Document Validation Heading */
 h2 {
     text-align: center;
-    color: #444;
+    background: black;
+    color: white;
+    padding: 16px;
     font-size: 21px;
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+    border-radius: 4px;
 }
 
 table {
@@ -65,12 +71,15 @@ th {
 }
 
 td {
-    background: #fff;
+    background: white;
 }
 
+/* Valid Document Green Background */
 .valid {
-    color: #16803c;
+    background: #198754;
+    color: white;
     font-weight: bold;
+    text-align: center;
 }
 
 @media (max-width: 600px) {
@@ -85,12 +94,12 @@ td {
         overflow-wrap: anywhere;
     }
 
-    th {
-        width: 40%;
+    h1 {
+        font-size: 25px;
     }
 
-    h1 {
-        font-size: 24px;
+    h2 {
+        font-size: 18px;
     }
 }
 </style>
