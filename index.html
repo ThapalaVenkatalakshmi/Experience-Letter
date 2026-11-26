@@ -1,3 +1,4 @@
+perfect code
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,249 +9,307 @@
 <title>Document Validation Details</title>
 
 <style>
+
+/* COMMON */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    padding: 30px 15px;
-    color: #333;
-}
-
-.container {
+html, body {
     width: 100%;
-    max-width: 665px;
-    margin: 55px auto;
-    background: #fff;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    min-height: 100%;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
 }
 
-/* LOGO */
-.logo-section {
-    height: 143px;
+/* PAGE */
+body {
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #fff;
+    overflow: hidden;
+}
+
+.page {
+    width: 920px;
+    height: 1350px;
+    margin: auto;
+    background: #ffffff;
+    overflow: hidden;
+    border-radius: 25px;
+
+    display: grid;
+    grid-template-rows: 13% 7.3% 55.7% 24%;
+
+    container-type: inline-size;
+}
+
+/* LOGO HEADER */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo {
-    color: #d71936;
-    font-size: 49px;
-    font-weight: 800;
-    letter-spacing: -2px;
-    white-space: nowrap;
-    display: inline-block;
+    color: #df1734;
+    font-size: 70px;
+    font-weight: bold;
+    letter-spacing: -3px;
 }
 
-/* HEADING */
+/* TITLE */
 .heading {
     background: #191919;
-    color: #fff;
-    text-align: center;
-    padding: 23px 10px;
-    font-size: 27px;
+    color: #ffffff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 36px;
     font-weight: bold;
+    text-align: center;
 }
 
 /* DETAILS */
-.details-row {
+.details {
     display: grid;
-    grid-template-columns: 45% 55%;
-    padding: 23px 32px;
-    border-bottom: 1px solid #e8e8e8;
-    align-items: start;
-    min-height: 85px;
+    grid-template-rows: 20% 14% 14% 32% 20%;
+    min-height: 0;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 46% 54%;
+    align-items: center;
+    padding: 0 45px;
+    border-bottom: 1px solid #e5e5e5;
+    min-height: 0;
 }
 
 .label {
-    font-size: 23px;
+    font-size: 34px;
     font-weight: bold;
-    line-height: 1.6;
+    color: #333333;
+    line-height: 1.5;
 }
 
 .value {
-    font-size: 23px;
-    line-height: 1.7;
-    color: #555;
+    font-size: 34px;
+    color: #555555;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
 }
 
 /* STATUS */
 .status {
     display: inline-block;
-    background: #29aa68;
-    color: white;
-    font-size: 20px;
+    background: #27ad69;
+    color: #ffffff;
+    padding: 10px 22px;
+    border-radius: 9px;
+    font-size: 32px;
     font-weight: bold;
-    padding: 10px 19px;
-    border-radius: 7px;
     white-space: nowrap;
 }
 
 /* FOOTER */
 .footer {
     background: #fafafa;
-    padding: 32px 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    color: #888;
-    font-size: 19px;
-    line-height: 1.8;
+    padding: 25px 55px;
+    color: #888888;
+    font-size: 27px;
+    line-height: 1.7;
+    overflow: hidden;
 }
 
 .footer strong {
-    color: #777;
+    color: #777777;
 }
 
 /* MOBILE RESPONSIVE */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 920px) {
 
     body {
-        padding: 15px 10px;
+        width: 100%;
+        height: 100dvh;
+        min-height: 0;
     }
 
-    .container {
-        margin: 55px auto;
-        border-radius: 17px;
-    }
+    .page {
+        width: min(
+            calc(100vw - 32px),
+            calc((100dvh - 32px) * 0.68148)
+        );
 
-    .logo-section {
-        height: 125px;
+        height: auto;
+        aspect-ratio: 920 / 1350;
+        flex-shrink: 0;
+        border-radius: 22px;
     }
 
     .logo {
-        font-size: 40px;
-        letter-spacing: -1.5px;
+        font-size: 7.6cqw;
     }
 
     .heading {
-        font-size: 22px;
-        padding: 22px 8px;
-    }
-
-    .details-row {
-        grid-template-columns: 45% 55%;
-        padding: 20px 20px;
-        gap: 0;
+        font-size: 3.9cqw;
     }
 
     .label {
-        font-size: 18px;
+        font-size: 3.7cqw;
     }
 
     .value {
-        font-size: 18px;
-        overflow-wrap: anywhere;
+        font-size: 3.7cqw;
     }
 
     .status {
-        font-size: 16px;
-        padding: 9px 12px;
+        font-size: 3.5cqw;
+        padding: 1.2cqw 2.4cqw;
+    }
+
+    .row {
+        padding: 0 5%;
     }
 
     .footer {
-        padding: 25px 20px;
-        font-size: 16px;
+        font-size: 3cqw;
+        padding: 3% 6%;
     }
 }
+
+/* PRINT SETTINGS */
+@page {
+    size: 920px 1350px;
+    margin: 0;
+}
+
+@media print {
+
+    html, body {
+        width: 920px;
+        height: 1350px;
+        background: white;
+        overflow: hidden;
+    }
+
+    body {
+        display: block;
+    }
+
+    .page {
+        width: 920px;
+        height: 1350px;
+        aspect-ratio: auto;
+        border-radius: 0;
+        margin: 0;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="page">
 
-    <!-- GRASSROOTS LOGO -->
-    <div class="logo-section">
+     <!-- COMPANY NAME - ONLY ONCE -->
+    <div class="header">
         <div class="logo">grassroots</div>
     </div>
+
 
     <!-- HEADING -->
     <div class="heading">
         Document Validation Details
     </div>
 
-    <!-- DOCUMENT AUTHENTICITY -->
-    <div class="details-row">
-        <div class="label">
-            Document<br>Authenticity
+    <!-- DOCUMENT DETAILS -->
+    <div class="details">
+
+        <!-- AUTHENTICITY -->
+        <div class="row">
+            <div class="label">
+                Document<br>
+                Authenticity
+            </div>
+
+            <div class="value">
+                <span class="status">
+                    Valid Document
+                </span>
+            </div>
         </div>
 
-        <div class="value">
-            <span class="status">Valid Document</span>
-        </div>
-    </div>
+        <!-- DOCUMENT TYPE -->
+        <div class="row">
+            <div class="label">
+                Document Type
+            </div>
 
-    <!-- DOCUMENT TYPE -->
-    <div class="details-row">
-        <div class="label">
-            Document Type
-        </div>
-
-        <div class="value">
-            Experience Letter
-        </div>
-    </div>
-
-    <!-- DOCUMENT OWNER -->
-    <div class="details-row">
-        <div class="label">
-            Document Owner
+            <div class="value">
+                Experience Letter
+            </div>
         </div>
 
-        <div class="value">
-            Thapala Venkatalakshmi
-        </div>
-    </div>
+        <!-- DOCUMENT OWNER -->
+        <div class="row">
+            <div class="label">
+                Document Owner
+            </div>
 
-    <!-- VERIFICATION DETAILS -->
-    <div class="details-row">
-        <div class="label">
-            Verification Details
-        </div>
-
-        <div class="value">
-            Joined on 2024-06-25;<br>
-            Relieved on 2026-09-06<br>
-            with designation as<br>
-           MIS Executive
-
-        </div>
-    </div>
-
-    <!-- GENERATION DATE -->
-    <div class="details-row">
-        <div class="label">
-            Document<br>Generation Date
+            <div class="value">
+                Thapala Venkatalakshmi
+            </div>
         </div>
 
-        <div class="value">
-            2026-10-22 16:08:12 IST
-        </div>
-    </div>
+        <!-- VERIFICATION DETAILS -->
+        <div class="row">
+            <div class="label">
+                Verification Details
+            </div>
 
-    <!-- FOOTER -->
+            <div class="value">
+                Joined on 2024-06-25;<br>
+                Relieved on 2026-09-06<br>
+                with designation as<br>
+                MIS Executive
+
+            </div>
+        </div>
+
+        <!-- GENERATION DATE -->
+        <div class="row">
+            <div class="label">
+                Document<br>
+                Generation Date
+            </div>
+
+            <div class="value">
+                2026-10-22 16:08:12 IST
+            </div>
+        </div>
+
     <div class="footer">
+        ** Cross check the above Document Generation Date with<br>
+        the download date mentioned in the document above the<br>
+        QR Code.<br>
 
-        ** Cross check the above Document
-        Generation Date with the download
-        date mentioned in the document above
-        the QR Code.
-
-        <br>
-
-        This verification result will be
-        published only by
+        This verification result will be published only by<br>
 
         <strong>https://grssl.com</strong>.
-
-        Cross verify the URL domain generating
+        Cross verify the URL domain generating<br>
         the verification result.
+        </div>
 
     </div>
 
