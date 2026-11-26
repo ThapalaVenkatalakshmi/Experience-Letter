@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Document Validation Details</title>
 
 <style>
@@ -32,7 +31,6 @@ html, body {
 .stage {
     position: fixed;
     inset: 0;
-
     width: 100%;
     height: 100vh;
     height: 100dvh;
@@ -43,27 +41,24 @@ html, body {
 
     overflow: hidden;
 
-    /* Match first screenshot side margins */
-    padding: 20px 42px;
+    /* Match grssl.com screenshot margins */
+    padding: 20px 26px;
 }
 
-/* FIXED DOCUMENT */
+/* DOCUMENT */
 
 .page {
     width: 920px;
     flex: none;
 
     background: #ffffff;
-
     border-radius: 20px;
     overflow: hidden;
 
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
 
-    transform:
-        translateY(-18px)
-        scale(var(--fit-scale, 1));
-
+    /* Center the document; no extra upward shift */
+    transform: scale(var(--fit-scale, 1));
     transform-origin: center center;
 }
 
@@ -80,15 +75,11 @@ html, body {
 }
 
 .brand-name {
-    color: #eb212f;
-
+    color: #df1f32;
     font-size: 68px;
     font-weight: bold;
-
     letter-spacing: -4px;
     white-space: nowrap;
-
-    display: inline-block;
 }
 
 /* HEADING */
@@ -98,12 +89,10 @@ html, body {
     color: #ffffff;
 
     text-align: center;
-
     padding: 32px 15px;
 
     font-size: 36px;
     font-weight: bold;
-
     white-space: nowrap;
 }
 
@@ -111,15 +100,12 @@ html, body {
 
 .row {
     display: grid;
-
     grid-template-columns: 46% 54%;
 
     padding: 30px 46px;
-
     border-bottom: 1px solid #e6e6e6;
 
     align-items: center;
-
     min-height: 116px;
 
     font-size: 30px;
@@ -149,12 +135,13 @@ html, body {
     color: #ffffff;
 
     padding: 8px 24px;
-
     border-radius: 10px;
 
     font-weight: bold;
     white-space: nowrap;
 }
+
+/* VERIFICATION DETAILS */
 
 .verification {
     align-items: start;
@@ -167,7 +154,6 @@ html, body {
     color: #929292;
 
     text-align: center;
-
     padding: 48px 35px;
 
     font-size: 25px;
@@ -197,19 +183,15 @@ html, body {
     .stage {
         position: static;
         height: auto;
-
         padding: 0;
-
         display: block;
         overflow: visible;
     }
 
     .page {
         width: 100%;
-
         border-radius: 0;
         box-shadow: none;
-
         transform: none !important;
 
         print-color-adjust: exact;
@@ -238,15 +220,12 @@ html, body {
         font-size: 15px;
         padding: 25px;
     }
-
 }
 
 </style>
 </head>
 
 <body>
-
-<!-- MAIN SCREEN -->
 
 <div class="stage" id="stage">
 
@@ -267,7 +246,6 @@ html, body {
         <!-- DOCUMENT AUTHENTICITY -->
 
         <div class="row first-row">
-
             <div class="row-label">
                 Document<br>Authenticity
             </div>
@@ -275,13 +253,11 @@ html, body {
             <div class="row-value">
                 <span class="valid">Valid Document</span>
             </div>
-
         </div>
 
         <!-- DOCUMENT TYPE -->
 
         <div class="row">
-
             <div class="row-label">
                 Document Type
             </div>
@@ -289,13 +265,11 @@ html, body {
             <div class="row-value">
                 Experience Letter
             </div>
-
         </div>
 
         <!-- DOCUMENT OWNER -->
 
         <div class="row">
-
             <div class="row-label">
                 Document Owner
             </div>
@@ -303,13 +277,11 @@ html, body {
             <div class="row-value">
                 Thapala Venkatalakshmi
             </div>
-
         </div>
 
         <!-- VERIFICATION DETAILS -->
 
         <div class="row verification">
-
             <div class="row-label">
                 Verification Details
             </div>
@@ -320,13 +292,11 @@ html, body {
                 with designation as<br>
                 Process Executive
             </div>
-
         </div>
 
         <!-- GENERATION DATE -->
 
         <div class="row">
-
             <div class="row-label">
                 Document<br>Generation Date
             </div>
@@ -334,13 +304,11 @@ html, body {
             <div class="row-value">
                 2026-10-22 16:08:12 IST
             </div>
-
         </div>
 
         <!-- FOOTER -->
 
         <div class="footer">
-
             ** Cross check the above Document Generation Date with<br>
             the download date mentioned in the document above the<br>
             QR Code.<br>
@@ -350,14 +318,11 @@ html, body {
             <strong>https://grssl.com</strong>.
             Cross verify the URL domain generating<br>
             the verification result.
-
         </div>
 
     </div>
 
 </div>
-
-<!-- AUTOMATIC PROPORTIONAL SCALING -->
 
 <script>
 
@@ -372,24 +337,20 @@ function fitPage() {
 
     page.style.setProperty("--fit-scale", "1");
 
-    /* Original document dimensions */
-
     const originalWidth = page.offsetWidth;
     const originalHeight = page.offsetHeight;
 
-    /* Available screen dimensions */
+    /* Available screen area */
 
-    const availableWidth = stage.clientWidth - 84;
+    const availableWidth = stage.clientWidth - 52;
     const availableHeight = stage.clientHeight - 40;
 
     if (!originalWidth || !originalHeight) return;
 
-    /* Calculate proportional scaling */
+    /* Keep the original document proportions */
 
     const scaleX = availableWidth / originalWidth;
     const scaleY = availableHeight / originalHeight;
-
-    /* Fit without changing document proportions */
 
     const finalScale = Math.min(
         scaleX,
@@ -397,11 +358,7 @@ function fitPage() {
         1
     );
 
-    page.style.setProperty(
-        "--fit-scale",
-        finalScale
-    );
-
+    page.style.setProperty("--fit-scale", finalScale);
 }
 
 /* INITIAL LOAD */
@@ -413,33 +370,25 @@ window.addEventListener("load", function() {
     if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(fitPage);
     }
-
 });
 
 /* SCREEN RESIZE */
 
 window.addEventListener("resize", fitPage);
 
-/* MOBILE ORIENTATION CHANGE */
+/* MOBILE ROTATION */
 
 window.addEventListener("orientationchange", function() {
-
     setTimeout(fitPage, 300);
-
 });
 
-/* MOBILE VIEWPORT CHANGE */
+/* MOBILE BROWSER VIEWPORT */
 
 if (window.visualViewport) {
-
-    window.visualViewport.addEventListener(
-        "resize",
-        fitPage
-    );
-
+    window.visualViewport.addEventListener("resize", fitPage);
 }
 
-/* CONTENT SIZE OBSERVER */
+/* SIZE OBSERVER */
 
 if (window.ResizeObserver) {
 
@@ -448,17 +397,9 @@ if (window.ResizeObserver) {
     });
 
     window.addEventListener("load", function() {
-
-        observer.observe(
-            document.getElementById("stage")
-        );
-
-        observer.observe(
-            document.getElementById("page")
-        );
-
+        observer.observe(document.getElementById("stage"));
+        observer.observe(document.getElementById("page"));
     });
-
 }
 
 </script>
