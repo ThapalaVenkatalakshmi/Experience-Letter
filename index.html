@@ -1,38 +1,64 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Document Validation Details</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
 
-body {
+html, body {
     margin: 0;
-    padding: 16px;
-    background: #f2f2f2;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
+    background: #f2f2f2;
     color: #333;
 }
 
+/* MAIN SCREEN */
+
+.stage {
+    width: 100%;
+    height: calc(100svh - 55px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 12px;
+}
+
+/* DOCUMENT */
+
 .page {
-    max-width: 920px;
+    width: min(920px, calc(100vw - 24px));
     margin: auto;
     background: white;
-    border-radius: 28px;
+    border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    flex-shrink: 0;
+    transform: scale(var(--fit-scale, 1));
+    transform-origin: center center;
 }
+
+/* GRASSROOTS LOGO */
 
 .brand {
     height: 198px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: white;
 }
 
 .brand-name {
@@ -40,7 +66,11 @@ body {
     font-size: 68px;
     font-weight: bold;
     letter-spacing: -4px;
+    white-space: nowrap;
+    display: inline-block;
 }
+
+/* HEADING */
 
 .heading {
     background: #191919;
@@ -50,6 +80,8 @@ body {
     font-size: 36px;
     font-weight: bold;
 }
+
+/* DOCUMENT ROWS */
 
 .row {
     display: grid;
@@ -74,6 +106,8 @@ body {
     min-height: 170px;
 }
 
+/* VALID DOCUMENT STATUS */
+
 .valid {
     display: inline-block;
     background: #28a966;
@@ -88,6 +122,8 @@ body {
     align-items: start;
 }
 
+/* FOOTER */
+
 .footer {
     background: #fafafa;
     color: #929292;
@@ -101,36 +137,108 @@ body {
     color: #777;
 }
 
+/* PRINT BUTTON */
+
 .print-wrap {
-    text-align: center;
-    margin: 20px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .print-button {
     background: #222;
     color: white;
     border: none;
-    padding: 12px 30px;
-    font-size: 18px;
+    padding: 9px 28px;
+    font-size: 16px;
     cursor: pointer;
     border-radius: 7px;
 }
 
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 600px) {
+
+    .stage {
+        padding: 8px;
+    }
+
+    .page {
+        width: calc(100vw - 24px);
+        border-radius: 18px;
+    }
+
+    .brand {
+        height: 145px;
+    }
+
+    .brand-name {
+        font-size: clamp(32px, 9vw, 48px);
+        letter-spacing: -2px;
+    }
+
+    .heading {
+        font-size: clamp(17px, 5vw, 26px);
+        padding: 20px 8px;
+    }
+
+    .row {
+        grid-template-columns: 46% 54%;
+        gap: 0;
+        padding: 17px 16px;
+        font-size: clamp(13px, 3.2vw, 21px);
+        line-height: 1.5;
+        min-height: 0;
+    }
+
+    .first-row {
+        min-height: 105px;
+    }
+
+    .valid {
+        font-size: clamp(12px, 3vw, 17px);
+        padding: 8px 10px;
+        border-radius: 7px;
+    }
+
+    .footer {
+        font-size: clamp(12px, 3.5vw, 16px);
+        padding: 22px 12px;
+        line-height: 1.65;
+    }
+
+}
+
+/* PRINT SETTINGS */
+
 @media print {
+
     @page {
         size: A4 portrait;
         margin: 10mm;
     }
 
-    body {
-        padding: 0;
+    html, body {
+        width: 100%;
+        height: auto;
+        overflow: visible;
         background: white;
     }
 
+    .stage {
+        height: auto;
+        padding: 0;
+        overflow: visible;
+        display: block;
+    }
+
     .page {
+        width: 100%;
         max-width: none;
         border-radius: 0;
         box-shadow: none;
+        transform: none !important;
         print-color-adjust: exact;
         -webkit-print-color-adjust: exact;
     }
@@ -140,57 +248,57 @@ body {
     }
 
     .brand {
-        height: 150px;
-    }
-
-    .heading {
-        padding: 25px;
-        font-size: 28px;
-    }
-
-    .row {
-        padding: 20px 30px;
-        font-size: 20px;
-    }
-
-    .footer {
-        font-size: 17px;
-        padding: 30px;
-    }
-}
-
-@media(max-width:600px) {
-    .row {
-        grid-template-columns: 1fr;
-        gap: 8px;
-        padding: 20px;
-        font-size: 21px;
+        height: 130px;
     }
 
     .brand-name {
-        font-size: 48px;
+        font-size: 52px;
+    }
+
+    .heading {
+        font-size: 25px;
+        padding: 20px;
+    }
+
+    .row {
+        padding: 17px 25px;
+        font-size: 18px;
     }
 
     .footer {
-        font-size: 16px;
+        font-size: 15px;
+        padding: 25px;
     }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="page">
+<!-- MAIN STAGE -->
+
+<div class="stage" id="stage">
+
+<div class="page" id="page">
+
+    <!-- GRASSROOTS LOGO -->
 
     <div class="brand">
         <div class="brand-name">grassroots</div>
     </div>
 
+    <!-- HEADING -->
+
     <div class="heading">
         Document Validation Details
     </div>
 
+    <!-- DOCUMENT AUTHENTICITY -->
+
     <div class="row first-row">
+
         <div class="row-label">
             Document<br>Authenticity
         </div>
@@ -198,32 +306,58 @@ body {
         <div class="row-value">
             <span class="valid">Valid Document</span>
         </div>
+
     </div>
 
-    <div class="row">
-        <div class="row-label">Document Type</div>
-        <div class="row-value">Experience Letter</div>
-    </div>
+    <!-- DOCUMENT TYPE -->
 
     <div class="row">
-        <div class="row-label">Document Owner</div>
+
+        <div class="row-label">
+            Document Type
+        </div>
+
+        <div class="row-value">
+            Experience Letter
+        </div>
+
+    </div>
+
+    <!-- DOCUMENT OWNER -->
+
+    <div class="row">
+
+        <div class="row-label">
+            Document Owner
+        </div>
+
         <div class="row-value">
             Thapala Venkatalakshmi
         </div>
+
     </div>
 
+    <!-- VERIFICATION DETAILS -->
+
     <div class="row verification">
-        <div class="row-label">Verification Details</div>
+
+        <div class="row-label">
+            Verification Details
+        </div>
 
         <div class="row-value">
             Joined on 2024-06-25;<br>
             Relieved on 2026-09-06<br>
             with designation as<br>
-             MIS Executive
+            MIS Executive
         </div>
+
     </div>
 
+    <!-- GENERATION DATE -->
+
     <div class="row">
+
         <div class="row-label">
             Document<br>Generation Date
         </div>
@@ -231,9 +365,13 @@ body {
         <div class="row-value">
             2026-10-22 16:08:12 IST
         </div>
+
     </div>
 
+    <!-- FOOTER -->
+
     <div class="footer">
+
         ** Cross check the above Document Generation Date with<br>
         the download date mentioned in the document above the<br>
         QR Code.<br>
@@ -243,15 +381,72 @@ body {
         <strong>https://grssl.com</strong>.
         Cross verify the URL domain generating<br>
         the verification result.
+
     </div>
 
 </div>
+
+</div>
+
+<!-- PRINT BUTTON -->
 
 <div class="print-wrap">
     <button class="print-button" onclick="window.print()">
         Print
     </button>
 </div>
+
+<!-- AUTOMATIC SCREEN FIT -->
+
+<script>
+
+function fitPage() {
+
+    const stage = document.getElementById("stage");
+    const page = document.getElementById("page");
+
+    if (!stage || !page) return;
+
+    page.style.setProperty("--fit-scale", "1");
+
+    const availableWidth = stage.clientWidth;
+    const availableHeight = stage.clientHeight;
+
+    const originalWidth = page.offsetWidth;
+    const originalHeight = page.offsetHeight;
+
+    const scaleX = availableWidth / originalWidth;
+    const scaleY = availableHeight / originalHeight;
+
+    const scale = Math.min(scaleX, scaleY, 1);
+
+    page.style.setProperty("--fit-scale", scale);
+
+}
+
+/* INITIAL LOAD */
+
+window.addEventListener("load", () => {
+
+    fitPage();
+
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(fitPage);
+    }
+
+});
+
+/* SCREEN RESIZE */
+
+window.addEventListener("resize", fitPage);
+
+/* ORIENTATION CHANGE */
+
+window.addEventListener("orientationchange", () => {
+    setTimeout(fitPage, 200);
+});
+
+</script>
 
 </body>
 </html>
