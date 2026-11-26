@@ -136,18 +136,21 @@ html, body {
     background: #ffffff;
 
     font-family: 'Roboto', Arial, sans-serif;
-    font-size: 32px;
-    line-height: 1.5;
+    font-size: 30px;
+    line-height: 1.65;
+    letter-spacing: normal;
 }
 
 .row-label {
     font-weight: 700;
     color: #292929;
+    letter-spacing: normal;
 }
 
 .row-value {
-    color: #555555;
     font-weight: 400;
+    color: #555555;
+    letter-spacing: normal;
 }
 
 /* ROW HEIGHTS */
@@ -186,9 +189,10 @@ html, body {
     border-radius: 10px;
 
     font-family: 'Roboto', Arial, sans-serif;
-    font-size: 31px;
+    font-size: 29px;
     font-weight: 700;
 
+    letter-spacing: normal;
     white-space: nowrap;
 }
 
@@ -396,7 +400,7 @@ function fitPage() {
 
     if (availableWidth <= 0) return;
 
-    /* Preserve the previously approved page size */
+    /* Preserve previously approved page size */
 
     const finalScale = Math.min(
         (availableWidth / originalWidth) * 1.05,
