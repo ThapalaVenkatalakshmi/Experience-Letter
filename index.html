@@ -8,369 +8,307 @@
 <title>Document Validation Details</title>
 
 <style>
-
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
+html, body {
+    width: 100%;
+    min-height: 100%;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+}
+
+/* PAGE */
 body {
-    margin: 0;
-    padding: 16px;
-    background: #f2f2f2;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .page {
-    width: 100%;
-    max-width: 920px;
+    width: 920px;
+    height: 1350px;
     margin: auto;
+    background: #ffffff;
     overflow: hidden;
-    background: #fff;
-    border-radius: 28px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    border-radius: 25px;
+
+    display: grid;
+    grid-template-rows: 13% 7.3% 55.7% 24%;
 }
 
-/* LOGO */
-
-.brand {
-    height: 198px;
+/* LOGO HEADER */
+.header {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-.brand-name {
-    color: #df1f32;
-    font-size: clamp(42px, 8vw, 68px);
+.logo {
+    color: #df1734;
+    font-size: 70px;
     font-weight: bold;
-    letter-spacing: -4px;
+    letter-spacing: -3px;
 }
 
-/* HEADING */
-
+/* TITLE */
 .heading {
-    min-height: 112px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
     background: #191919;
-    color: white;
-    text-align: center;
-    font-size: clamp(20px, 4vw, 36px);
+    color: #ffffff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 36px;
     font-weight: bold;
+    text-align: center;
 }
 
-/* ROW DETAILS */
+/* DETAILS */
+.details {
+    display: grid;
+    grid-template-rows: 20% 14% 14% 32% 20%;
+    min-height: 0;
+}
 
 .row {
     display: grid;
     grid-template-columns: 46% 54%;
     align-items: center;
-    padding: 30px 46px;
-    border-bottom: 1px solid #e6e6e6;
-    min-height: 116px;
-    font-size: clamp(17px, 3.2vw, 30px);
-    line-height: 1.55;
+    padding: 0 45px;
+    border-bottom: 1px solid #e5e5e5;
+    min-height: 0;
 }
 
-.first-row {
-    min-height: 170px;
-}
-
-.row-label {
+.label {
+    font-size: 34px;
     font-weight: bold;
-    color: #333;
-    min-width: 0;
+    color: #333333;
+    line-height: 1.5;
 }
 
-.row-value {
-    color: #555;
-    min-width: 0;
+.value {
+    font-size: 34px;
+    color: #555555;
+    line-height: 1.6;
     overflow-wrap: anywhere;
 }
 
-/* GREEN VALID DOCUMENT */
-
-.valid {
+/* STATUS */
+.status {
     display: inline-block;
-    background: #27AE61;
-    color: white;
-    border-radius: 10px;
-    padding: 8px 24px;
+    background: #27ad69;
+    color: #ffffff;
+    padding: 10px 22px;
+    border-radius: 9px;
+    font-size: 32px;
     font-weight: bold;
-    line-height: 1.5;
     white-space: nowrap;
 }
 
-/* VERIFICATION DETAILS */
-
-.verification {
-    align-items: start;
-}
-
 /* FOOTER */
-
 .footer {
     background: #fafafa;
-    color: #929292;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     text-align: center;
-    padding: 48px 35px 42px;
-    font-size: clamp(13px, 2.7vw, 25px);
-    line-height: 1.7;
+    padding: 25px 50px;
+
+    color: #888888;
+    font-size: 28px;
+    line-height: 1.6;
+    overflow: hidden;
 }
 
 .footer strong {
-    color: #777;
+    color: #777777;
 }
 
-/* PRINT BUTTON */
-
-.print-wrap {
-    max-width: 920px;
-    margin: 18px auto;
-    text-align: center;
-}
-
-.print-button {
-    border: none;
-    border-radius: 7px;
-    padding: 12px 28px;
-    background: #222;
-    color: white;
-    font-size: 17px;
-    cursor: pointer;
-}
-
-/* MOBILE VIEW */
-
-@media (max-width: 600px) {
+/* MOBILE RESPONSIVE */
+@media screen and (max-width: 920px) {
 
     body {
-        padding: 8px;
+        width: 100%;
+        height: 100dvh;
+        min-height: 0;
     }
 
     .page {
-        border-radius: 16px;
+        width: min(
+            calc(100vw - 32px),
+            calc((100dvh - 32px) * 0.68148)
+        );
+
+        height: auto;
+        aspect-ratio: 920 / 1350;
+
+        flex-shrink: 0;
+        border-radius: 22px;
     }
 
-    .brand {
-        height: 135px;
-    }
-
-    .brand-name {
-        font-size: 42px;
+    .logo {
+        font-size: 7.6cqw;
     }
 
     .heading {
-        min-height: 85px;
-        font-size: 18px;
-        padding: 20px 5px;
-        white-space: nowrap;
+        font-size: 3.9cqw;
+    }
+
+    .label {
+        font-size: 3.7cqw;
+    }
+
+    .value {
+        font-size: 3.7cqw;
+    }
+
+    .status {
+        font-size: 3.5cqw;
+        padding: 1.2cqw 2.4cqw;
     }
 
     .row {
-        display: grid;
-        grid-template-columns: 46% 54%;
-        padding: 20px 14px;
-        gap: 0;
-        font-size: 17px;
-        line-height: 1.5;
-        min-height: 90px;
-    }
-
-    .first-row {
-        min-height: 120px;
-    }
-
-    .valid {
-        font-size: 14px;
-        padding: 8px 10px;
-        white-space: nowrap;
+        padding: 0 5%;
     }
 
     .footer {
-        font-size: 13px;
-        padding: 25px 12px;
+        font-size: 3cqw;
+        padding: 3% 6%;
     }
-
 }
 
-/* PRINT SETTINGS */
+/* ENABLE CONTAINER UNITS */
+.page {
+    container-type: inline-size;
+}
+
+/* PRINT */
+@page {
+    size: 920px 1350px;
+    margin: 0;
+}
 
 @media print {
-
-    @page {
-        size: A4 portrait;
-        margin: 10mm;
+    html, body {
+        width: 920px;
+        height: 1350px;
+        background: white;
+        overflow: hidden;
     }
 
     body {
-        padding: 0;
-        background: white;
+        display: block;
     }
 
     .page {
-        max-width: none;
-        width: 100%;
+        width: 920px;
+        height: 1350px;
+        aspect-ratio: auto;
         border-radius: 0;
-        box-shadow: none;
-        print-color-adjust: exact;
-        -webkit-print-color-adjust: exact;
+        margin: 0;
     }
-
-    .print-wrap {
-        display: none;
-    }
-
-    .brand {
-        height: 150px;
-    }
-
-    .heading {
-        min-height: 85px;
-        font-size: 28px;
-    }
-
-    .row {
-        padding: 20px 30px;
-        font-size: 20px;
-        min-height: 82px;
-    }
-
-    .first-row {
-        min-height: 120px;
-    }
-
-    .footer {
-        padding: 30px 35px;
-        font-size: 17px;
-    }
-
 }
-
 </style>
 </head>
 
 <body>
 
-<main class="page">
+<div class="page">
 
-    <!-- GRASSROOTS LOGO -->
+    <!-- LOGO -->
+    <div class="header">
+        <div class="logo">grassroots</div>
+    </div>
 
-    <header class="brand">
-        <div class="brand-name">grassroots</div>
-    </header>
-
-    <!-- MAIN HEADING -->
-
-    <section class="heading">
+    <!-- HEADING -->
+    <div class="heading">
         Document Validation Details
-    </section>
+    </div>
 
-    <!-- DOCUMENT AUTHENTICITY -->
+    <!-- DOCUMENT DETAILS -->
+    <div class="details">
 
-    <section class="row first-row">
+        <div class="row">
+            <div class="label">
+                Document<br>
+                Authenticity
+            </div>
 
-        <div class="row-label">
-            Document<br>
-            Authenticity
+            <div class="value">
+                <span class="status">
+                    Valid Document
+                </span>
+            </div>
         </div>
 
-        <div class="row-value">
-            <span class="valid">
-                Valid Document
-            </span>
+        <div class="row">
+            <div class="label">
+                Document Type
+            </div>
+
+            <div class="value">
+                Experience Letter
+            </div>
         </div>
 
-    </section>
+        <div class="row">
+            <div class="label">
+                Document Owner
+            </div>
 
-    <!-- DOCUMENT TYPE -->
-
-    <section class="row">
-
-        <div class="row-label">
-            Document Type
+            <div class="value">
+                Thapala Venkatalakshmi
+            </div>
         </div>
 
-        <div class="row-value">
-            Experience Letter
+        <div class="row">
+            <div class="label">
+                Verification Details
+            </div>
+
+            <div class="value">
+                Joined on 2024-06-25;<br>
+                Relieved on 2026-09-06<br>
+                with designation as<br>
+                Process Executive
+            </div>
         </div>
 
-    </section>
+        <div class="row">
+            <div class="label">
+                Document<br>
+                Generation Date
+            </div>
 
-    <!-- DOCUMENT OWNER -->
-
-    <section class="row">
-
-        <div class="row-label">
-            Document Owner
+            <div class="value">
+                2026-10-22 16:08:12 IST
+            </div>
         </div>
 
-        <div class="row-value">
-            Thapala Venkatalakshmi
-        </div>
-
-    </section>
-
-    <!-- VERIFICATION DETAILS -->
-
-    <section class="row verification">
-
-        <div class="row-label">
-            Verification Details
-        </div>
-
-        <div class="row-value">
-            Joined on 2024-06-25;<br>
-            Relieved on 2026-09-06<br>
-            with designation as<br>
-            MIS Executive
-        </div>
-
-    </section>
-
-    <!-- DOCUMENT GENERATION DATE -->
-
-    <section class="row">
-
-        <div class="row-label">
-            Document<br>
-            Generation Date
-        </div>
-
-        <div class="row-value">
-            2026-10-22 16:08:12 IST
-        </div>
-
-    </section>
+    </div>
 
     <!-- FOOTER -->
+    <div class="footer">
+        <div>
+            ** Cross check the above Document Generation Date
+            with the download date mentioned in the document
+            above the QR Code.<br>
 
-    <footer class="footer">
-
-        ** Cross check the above Document Generation Date with<br>
-        the download date mentioned in the document above the<br>
-        QR Code.<br>
-
-        This verification result will be published only by<br>
-
-        <strong>https://grssl.com</strong>.
-        Cross verify the URL domain generating<br>
-        the verification result.
-
-    </footer>
-
-</main>
-
-<!-- PRINT BUTTON -->
-
-<div class="print-wrap">
-
-    <button class="print-button" onclick="window.print()">
-        Print
-    </button>
+            This verification result will be published only by
+            <strong>https://grssl.com</strong>.
+            Cross verify the URL domain generating the
+            verification result.
+        </div>
+    </div>
 
 </div>
 
