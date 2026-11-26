@@ -10,6 +10,8 @@
 
 <style>
 
+/* GLOBAL SETTINGS */
+
 * {
     box-sizing: border-box;
 }
@@ -25,7 +27,11 @@ html, body {
     color: #333;
 }
 
+/* MAIN SCREEN */
+
 .stage {
+    position: fixed;
+    inset: 0;
     width: 100%;
     height: 100vh;
     height: 100dvh;
@@ -33,20 +39,24 @@ html, body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    padding: 10px;
+    padding: 0;
 }
+
+/* FIXED DOCUMENT */
 
 .page {
     width: 920px;
-    max-width: 100%;
+    flex: none;
     background: white;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    flex-shrink: 0;
+
     transform: scale(var(--fit-scale, 1));
     transform-origin: center center;
 }
+
+/* GRASSROOTS LOGO */
 
 .brand {
     height: 198px;
@@ -62,7 +72,10 @@ html, body {
     font-weight: bold;
     letter-spacing: -4px;
     white-space: nowrap;
+    display: inline-block;
 }
+
+/* HEADING */
 
 .heading {
     background: #191919;
@@ -71,7 +84,10 @@ html, body {
     padding: 32px 15px;
     font-size: 36px;
     font-weight: bold;
+    white-space: nowrap;
 }
+
+/* DOCUMENT ROWS */
 
 .row {
     display: grid;
@@ -90,12 +106,14 @@ html, body {
 
 .row-value {
     color: #555;
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
 }
 
 .first-row {
     min-height: 170px;
 }
+
+/* VALID DOCUMENT STATUS */
 
 .valid {
     display: inline-block;
@@ -111,6 +129,8 @@ html, body {
     align-items: start;
 }
 
+/* FOOTER */
+
 .footer {
     background: #fafafa;
     color: #929292;
@@ -122,16 +142,6 @@ html, body {
 
 .footer strong {
     color: #777;
-}
-
-/* AUTOMATIC SCREEN FIT */
-
-@media screen {
-
-    .page {
-        will-change: transform;
-    }
-
 }
 
 /* PRINT SETTINGS */
@@ -151,15 +161,14 @@ html, body {
     }
 
     .stage {
+        position: static;
         height: auto;
-        padding: 0;
-        overflow: visible;
         display: block;
+        overflow: visible;
     }
 
     .page {
         width: 100%;
-        max-width: none;
         border-radius: 0;
         box-shadow: none;
         transform: none !important;
@@ -197,17 +206,25 @@ html, body {
 
 <body>
 
+<!-- MAIN SCREEN -->
+
 <div class="stage" id="stage">
 
 <div class="page" id="page">
+
+    <!-- GRASSROOTS LOGO -->
 
     <div class="brand">
         <div class="brand-name">grassroots</div>
     </div>
 
+    <!-- HEADING -->
+
     <div class="heading">
         Document Validation Details
     </div>
+
+    <!-- DOCUMENT AUTHENTICITY -->
 
     <div class="row first-row">
 
@@ -221,6 +238,8 @@ html, body {
 
     </div>
 
+    <!-- DOCUMENT TYPE -->
+
     <div class="row">
 
         <div class="row-label">
@@ -233,6 +252,8 @@ html, body {
 
     </div>
 
+    <!-- DOCUMENT OWNER -->
+
     <div class="row">
 
         <div class="row-label">
@@ -244,6 +265,8 @@ html, body {
         </div>
 
     </div>
+
+    <!-- VERIFICATION DETAILS -->
 
     <div class="row verification">
 
@@ -260,6 +283,8 @@ html, body {
 
     </div>
 
+    <!-- GENERATION DATE -->
+
     <div class="row">
 
         <div class="row-label">
@@ -271,6 +296,8 @@ html, body {
         </div>
 
     </div>
+
+    <!-- FOOTER -->
 
     <div class="footer">
 
@@ -294,6 +321,8 @@ html, body {
 </div>
 </div>
 
+<!-- AUTOMATIC RESPONSIVE SCALING -->
+
 <script>
 
 function fitPage() {
@@ -303,32 +332,45 @@ function fitPage() {
 
     if (!stage || !page) return;
 
-    // Reset scaling before measuring
+    // Reset previous scale
+
     page.style.setProperty("--fit-scale", "1");
 
-    const availableWidth = stage.clientWidth;
-    const availableHeight = stage.clientHeight;
+    // Get original document dimensions
 
     const originalWidth = page.offsetWidth;
     const originalHeight = page.offsetHeight;
 
+    // Get available screen dimensions
+
+    const availableWidth = stage.clientWidth;
+    const availableHeight = stage.clientHeight;
+
     if (!originalWidth || !originalHeight) return;
 
-    // Calculate width and height scaling
+    // Calculate width and height scale
+
     const scaleX = availableWidth / originalWidth;
     const scaleY = availableHeight / originalHeight;
 
-    // Fit the complete document inside the screen
-    const scale = Math.min(scaleX, scaleY, 1);
+    // Select the scale that fits the entire document
+
+    const finalScale = Math.min(
+        scaleX,
+        scaleY
+    );
+
+    // Apply proportional scaling
 
     page.style.setProperty(
         "--fit-scale",
-        scale
+        finalScale
     );
 
 }
 
-// Initial load
+// INITIAL LOAD
+
 window.addEventListener("load", () => {
 
     fitPage();
@@ -339,15 +381,20 @@ window.addEventListener("load", () => {
 
 });
 
-// Screen resize
+// SCREEN RESIZE
+
 window.addEventListener("resize", fitPage);
 
-// Orientation change
+// MOBILE ORIENTATION CHANGE
+
 window.addEventListener("orientationchange", () => {
+
     setTimeout(fitPage, 300);
+
 });
 
-// Observe screen and content size changes
+// CONTENT SIZE OBSERVER
+
 if (window.ResizeObserver) {
 
     const observer = new ResizeObserver(() => {
@@ -355,6 +402,7 @@ if (window.ResizeObserver) {
     });
 
     window.addEventListener("load", () => {
+
         observer.observe(
             document.getElementById("stage")
         );
@@ -362,6 +410,7 @@ if (window.ResizeObserver) {
         observer.observe(
             document.getElementById("page")
         );
+
     });
 
 }
