@@ -8,6 +8,8 @@
 <title>Document Validation Details</title>
 
 <style>
+
+/* COMMON */
 * {
     margin: 0;
     padding: 0;
@@ -40,6 +42,8 @@ body {
 
     display: grid;
     grid-template-rows: 13% 7.3% 55.7% 24%;
+
+    container-type: inline-size;
 }
 
 /* LOGO HEADER */
@@ -115,17 +119,14 @@ body {
 /* FOOTER */
 .footer {
     background: #fafafa;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     text-align: center;
-    padding: 25px 50px;
-
+    padding: 25px 55px;
     color: #888888;
-    font-size: 28px;
-    line-height: 1.6;
+    font-size: 27px;
+    line-height: 1.7;
     overflow: hidden;
 }
 
@@ -150,7 +151,6 @@ body {
 
         height: auto;
         aspect-ratio: 920 / 1350;
-
         flex-shrink: 0;
         border-radius: 22px;
     }
@@ -186,18 +186,14 @@ body {
     }
 }
 
-/* ENABLE CONTAINER UNITS */
-.page {
-    container-type: inline-size;
-}
-
-/* PRINT */
+/* PRINT SETTINGS */
 @page {
     size: 920px 1350px;
     margin: 0;
 }
 
 @media print {
+
     html, body {
         width: 920px;
         height: 1350px;
@@ -217,6 +213,7 @@ body {
         margin: 0;
     }
 }
+
 </style>
 </head>
 
@@ -237,6 +234,7 @@ body {
     <!-- DOCUMENT DETAILS -->
     <div class="details">
 
+        <!-- AUTHENTICITY -->
         <div class="row">
             <div class="label">
                 Document<br>
@@ -250,6 +248,7 @@ body {
             </div>
         </div>
 
+        <!-- DOCUMENT TYPE -->
         <div class="row">
             <div class="label">
                 Document Type
@@ -260,6 +259,7 @@ body {
             </div>
         </div>
 
+        <!-- DOCUMENT OWNER -->
         <div class="row">
             <div class="label">
                 Document Owner
@@ -270,6 +270,7 @@ body {
             </div>
         </div>
 
+        <!-- VERIFICATION DETAILS -->
         <div class="row">
             <div class="label">
                 Verification Details
@@ -283,6 +284,7 @@ body {
             </div>
         </div>
 
+        <!-- GENERATION DATE -->
         <div class="row">
             <div class="label">
                 Document<br>
@@ -296,18 +298,19 @@ body {
 
     </div>
 
-    <!-- FOOTER -->
+    <!-- FOOTER PARAGRAPH -->
     <div class="footer">
-        <div>
-            ** Cross check the above Document Generation Date
-            with the download date mentioned in the document
-            above the QR Code.<br>
 
-            This verification result will be published only by
-            <strong>https://grssl.com</strong>.
-            Cross verify the URL domain generating the
-            verification result.
+        <div>
+            ** Cross check the above Document Generation Date with<br>
+            the download date mentioned in the document above the<br>
+            QR Code.<br>
+
+            This verification result will be published only by<br>
+            <strong>https://grssl.com</strong>. Cross verify the URL domain generating<br>
+            the verification result.
         </div>
+
     </div>
 
 </div>
