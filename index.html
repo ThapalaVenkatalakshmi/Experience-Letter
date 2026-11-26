@@ -10,8 +10,6 @@
 
 <style>
 
-/* GLOBAL SETTINGS */
-
 * {
     box-sizing: border-box;
 }
@@ -43,8 +41,6 @@ html, body {
     justify-content: center;
 
     overflow: hidden;
-
-    /* Exact 26px side margins */
     padding: 0 26px;
 }
 
@@ -57,15 +53,13 @@ html, body {
     flex: none;
 
     background: #ffffff;
-
     border-radius: 20px;
     overflow: hidden;
 
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
 
-    /* Corrected vertical position */
     transform:
-        translateY(3px)
+        translateY(36px)
         scale(var(--fit-scale, 1));
 
     transform-origin: center center;
@@ -94,7 +88,7 @@ html, body {
     white-space: nowrap;
 }
 
-/* BLACK HEADING BAR */
+/* BLACK HEADING */
 
 .heading {
     width: 100%;
@@ -115,7 +109,7 @@ html, body {
     white-space: nowrap;
 }
 
-/* COMMON ROWS */
+/* DOCUMENT ROWS */
 
 .row {
     width: 100%;
@@ -128,7 +122,6 @@ html, body {
     align-items: center;
 
     border-bottom: 1px solid #e6e6e6;
-
     background: #ffffff;
 
     font-size: 32px;
@@ -145,32 +138,24 @@ html, body {
     font-weight: normal;
 }
 
-/* AUTHENTICITY */
+/* ROW HEIGHTS */
 
 .first-row {
     height: 169px;
 }
 
-/* DOCUMENT TYPE */
-
 .type-row {
     height: 118px;
 }
-
-/* DOCUMENT OWNER */
 
 .owner-row {
     height: 118px;
 }
 
-/* VERIFICATION DETAILS */
-
 .verification {
     height: 277px;
     align-items: start;
 }
-
-/* GENERATION DATE */
 
 .date-row {
     height: 171px;
@@ -213,8 +198,6 @@ html, body {
 
     font-size: 26px;
     line-height: 1.7;
-
-    font-weight: normal;
 }
 
 .footer strong {
@@ -222,7 +205,7 @@ html, body {
     font-weight: bold;
 }
 
-/* PRINT SETTINGS */
+/* PRINT */
 
 @media print {
 
@@ -244,7 +227,6 @@ html, body {
         height: auto;
 
         display: block;
-
         padding: 0;
         overflow: visible;
     }
@@ -257,7 +239,6 @@ html, body {
 
         border-radius: 0;
         box-shadow: none;
-
         overflow: visible;
     }
 }
@@ -271,7 +252,7 @@ html, body {
 
     <div class="page" id="page">
 
-        <!-- GRASSROOTS LOGO -->
+        <!-- LOGO -->
 
         <div class="brand">
             <div class="brand-name">grassroots</div>
@@ -283,7 +264,7 @@ html, body {
             Document Validation Details
         </div>
 
-        <!-- DOCUMENT AUTHENTICITY -->
+        <!-- AUTHENTICITY -->
 
         <div class="row first-row">
 
@@ -343,7 +324,7 @@ html, body {
 
         </div>
 
-        <!-- DOCUMENT GENERATION DATE -->
+        <!-- GENERATION DATE -->
 
         <div class="row date-row">
 
@@ -381,8 +362,6 @@ html, body {
 
 </div>
 
-<!-- AUTOMATIC PROPORTIONAL SCALING -->
-
 <script>
 
 function fitPage() {
@@ -394,20 +373,16 @@ function fitPage() {
 
     page.style.setProperty("--fit-scale", "1");
 
-    /* Original document width */
-
     const originalWidth = 920;
-
-    /* Exact available width */
 
     const availableWidth = stage.clientWidth - 52;
 
     if (availableWidth <= 0) return;
 
-    /* Width-based proportional scaling */
+    /* Corrected scale to match original grssl.com size */
 
     const finalScale = Math.min(
-        availableWidth / originalWidth,
+        (availableWidth / originalWidth) * 1.05,
         1
     );
 
