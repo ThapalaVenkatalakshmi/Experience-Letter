@@ -29,7 +29,8 @@ html, body {
 
 .stage {
     width: 100%;
-    height: calc(100svh - 55px);
+    height: 100vh;
+    height: 100svh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -137,25 +138,6 @@ html, body {
     color: #777;
 }
 
-/* PRINT BUTTON */
-
-.print-wrap {
-    height: 55px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.print-button {
-    background: #222;
-    color: white;
-    border: none;
-    padding: 9px 28px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 7px;
-}
-
 /* MOBILE RESPONSIVE */
 
 @media (max-width: 600px) {
@@ -243,10 +225,6 @@ html, body {
         -webkit-print-color-adjust: exact;
     }
 
-    .print-wrap {
-        display: none;
-    }
-
     .brand {
         height: 130px;
     }
@@ -277,7 +255,7 @@ html, body {
 
 <body>
 
-<!-- MAIN STAGE -->
+<!-- MAIN SCREEN -->
 
 <div class="stage" id="stage">
 
@@ -386,14 +364,6 @@ html, body {
 
 </div>
 
-</div>
-
-<!-- PRINT BUTTON -->
-
-<div class="print-wrap">
-    <button class="print-button" onclick="window.print()">
-        Print
-    </button>
 </div>
 
 <!-- AUTOMATIC SCREEN FIT -->
