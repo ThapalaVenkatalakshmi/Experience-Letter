@@ -1,4 +1,4 @@
-l
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,8 +44,8 @@ html, body {
 
     overflow: hidden;
 
-    /* Side and top/bottom margins */
-    padding: 20px 26px;
+    /* Exact side margin target */
+    padding: 0 14px;
 }
 
 /* MAIN DOCUMENT */
@@ -63,7 +63,11 @@ html, body {
 
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
 
-    transform: scale(var(--fit-scale, 1));
+    /* Target vertical position and proportional size */
+    transform:
+        translateY(36px)
+        scale(var(--fit-scale, 1));
+
     transform-origin: center center;
 }
 
@@ -81,7 +85,7 @@ html, body {
 }
 
 .brand-name {
-    color: #df1f32;
+    color: #EB212F;
 
     font-size: 68px;
     font-weight: bold;
@@ -141,38 +145,38 @@ html, body {
     font-weight: normal;
 }
 
-/* AUTHENTICITY ROW */
+/* AUTHENTICITY */
 
 .first-row {
     height: 169px;
 }
 
-/* DOCUMENT TYPE ROW */
+/* DOCUMENT TYPE */
 
 .type-row {
     height: 118px;
 }
 
-/* DOCUMENT OWNER ROW */
+/* DOCUMENT OWNER */
 
 .owner-row {
     height: 118px;
 }
 
-/* VERIFICATION ROW */
+/* VERIFICATION DETAILS */
 
 .verification {
     height: 277px;
     align-items: start;
 }
 
-/* GENERATION DATE ROW */
+/* GENERATION DATE */
 
 .date-row {
     height: 171px;
 }
 
-/* VALID DOCUMENT STATUS */
+/* VALID STATUS */
 
 .valid {
     display: inline-block;
@@ -215,11 +219,6 @@ html, body {
     color: #777777;
     font-weight: bold;
 }
-
-/* RESPONSIVE PROPORTIONAL SCALING */
-
-/* No mobile layout changes.
-   The complete document scales as one unit. */
 
 /* PRINT SETTINGS */
 
@@ -278,9 +277,7 @@ html, body {
         <!-- GRASSROOTS LOGO -->
 
         <div class="brand">
-            <div class="brand-name">
-                grassroots
-            </div>
+            <div class="brand-name">grassroots</div>
         </div>
 
         <!-- HEADING -->
@@ -393,7 +390,7 @@ html, body {
 
 </div>
 
-<!-- AUTOMATIC SCREEN SCALING -->
+<!-- AUTOMATIC PROPORTIONAL SCALING -->
 
 <script>
 
@@ -408,34 +405,25 @@ function fitPage() {
 
     page.style.setProperty("--fit-scale", "1");
 
-    /* Original fixed document size */
+    /* Original document dimensions */
 
     const originalWidth = 920;
-    const originalHeight = 1531;
 
-    /* Available screen size */
+    /* Available screen width
+       14px left + 14px right */
 
-    const availableWidth = stage.clientWidth - 52;
-    const availableHeight = stage.clientHeight - 40;
+    const availableWidth = stage.clientWidth - 28;
 
-    if (availableWidth <= 0 || availableHeight <= 0) {
-        return;
-    }
+    if (availableWidth <= 0) return;
 
-    /* Calculate proportional scale */
-
-    const scaleX = availableWidth / originalWidth;
-    const scaleY = availableHeight / originalHeight;
-
-    /* Keep document proportions unchanged */
+    /* Width-based scaling only */
 
     const finalScale = Math.min(
-        scaleX,
-        scaleY,
+        availableWidth / originalWidth,
         1
     );
 
-    /* Apply scaling */
+    /* Apply same scale to entire document */
 
     page.style.setProperty(
         "--fit-scale",
@@ -460,7 +448,7 @@ window.addEventListener("load", function() {
 
 window.addEventListener("resize", fitPage);
 
-/* MOBILE ORIENTATION CHANGE */
+/* MOBILE ROTATION */
 
 window.addEventListener("orientationchange", function() {
 
@@ -468,7 +456,7 @@ window.addEventListener("orientationchange", function() {
 
 });
 
-/* MOBILE BROWSER VIEWPORT CHANGE */
+/* MOBILE BROWSER VIEWPORT */
 
 if (window.visualViewport) {
 
