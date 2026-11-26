@@ -43,7 +43,9 @@ html, body {
     justify-content: center;
 
     overflow: hidden;
-    padding: 0 14px;
+
+    /* Exact 26px side margins */
+    padding: 0 26px;
 }
 
 /* MAIN DOCUMENT */
@@ -55,19 +57,21 @@ html, body {
     flex: none;
 
     background: #ffffff;
+
     border-radius: 20px;
     overflow: hidden;
 
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
 
+    /* Corrected vertical position */
     transform:
-        translateY(72px)
+        translateY(3px)
         scale(var(--fit-scale, 1));
 
     transform-origin: center center;
 }
 
-/* GRASSROOTS LOGO SECTION */
+/* GRASSROOTS LOGO */
 
 .brand {
     width: 100%;
@@ -124,6 +128,7 @@ html, body {
     align-items: center;
 
     border-bottom: 1px solid #e6e6e6;
+
     background: #ffffff;
 
     font-size: 32px;
@@ -171,7 +176,7 @@ html, body {
     height: 171px;
 }
 
-/* VALID DOCUMENT STATUS */
+/* VALID DOCUMENT */
 
 .valid {
     display: inline-block;
@@ -185,6 +190,7 @@ html, body {
 
     font-size: 31px;
     font-weight: bold;
+
     white-space: nowrap;
 }
 
@@ -238,6 +244,7 @@ html, body {
         height: auto;
 
         display: block;
+
         padding: 0;
         overflow: visible;
     }
@@ -250,6 +257,7 @@ html, body {
 
         border-radius: 0;
         box-shadow: none;
+
         overflow: visible;
     }
 }
@@ -363,6 +371,7 @@ html, body {
 
                 <strong>https://grssl.com</strong>.
                 Cross verify the URL domain generating<br>
+
                 the verification result.
             </div>
 
@@ -372,7 +381,7 @@ html, body {
 
 </div>
 
-<!-- AUTOMATIC SCALING -->
+<!-- AUTOMATIC PROPORTIONAL SCALING -->
 
 <script>
 
@@ -385,16 +394,20 @@ function fitPage() {
 
     page.style.setProperty("--fit-scale", "1");
 
+    /* Original document width */
+
     const originalWidth = 920;
 
-    const availableWidth = stage.clientWidth - 28;
+    /* Exact available width */
+
+    const availableWidth = stage.clientWidth - 52;
 
     if (availableWidth <= 0) return;
 
-    /* Slightly enlarge to match grssl.com screenshot */
+    /* Width-based proportional scaling */
 
     const finalScale = Math.min(
-        (availableWidth / originalWidth) * 1.05,
+        availableWidth / originalWidth,
         1
     );
 
