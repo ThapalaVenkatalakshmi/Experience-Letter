@@ -8,7 +8,14 @@
 
 <title>Document Validation Details</title>
 
+<!-- ROBOTO FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
+
 <style>
+
+/* GLOBAL SETTINGS */
 
 * {
     box-sizing: border-box;
@@ -21,7 +28,7 @@ html, body {
     height: 100%;
     overflow: hidden;
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     background: #f2f2f2;
     color: #333;
 }
@@ -81,11 +88,14 @@ html, body {
 .brand-name {
     color: #EB212F;
 
+    font-family: 'Roboto', Arial, sans-serif;
     font-size: 90px;
-    font-weight: bold;
+    font-weight: 800;
 
-    letter-spacing: -4px;
+    letter-spacing: -5.5px;
     white-space: nowrap;
+
+    display: inline-block;
 }
 
 /* BLACK HEADING */
@@ -103,8 +113,9 @@ html, body {
 
     text-align: center;
 
+    font-family: 'Roboto', Arial, sans-serif;
     font-size: 38px;
-    font-weight: bold;
+    font-weight: 700;
 
     white-space: nowrap;
 }
@@ -124,18 +135,19 @@ html, body {
     border-bottom: 1px solid #e6e6e6;
     background: #ffffff;
 
+    font-family: 'Roboto', Arial, sans-serif;
     font-size: 32px;
     line-height: 1.5;
 }
 
 .row-label {
-    font-weight: bold;
+    font-weight: 700;
     color: #292929;
 }
 
 .row-value {
     color: #555555;
-    font-weight: normal;
+    font-weight: 400;
 }
 
 /* ROW HEIGHTS */
@@ -173,8 +185,9 @@ html, body {
 
     border-radius: 10px;
 
+    font-family: 'Roboto', Arial, sans-serif;
     font-size: 31px;
-    font-weight: bold;
+    font-weight: 700;
 
     white-space: nowrap;
 }
@@ -196,16 +209,18 @@ html, body {
 
     padding: 35px;
 
+    font-family: 'Roboto', Arial, sans-serif;
     font-size: 26px;
     line-height: 1.7;
+    font-weight: 400;
 }
 
 .footer strong {
     color: #777777;
-    font-weight: bold;
+    font-weight: 700;
 }
 
-/* PRINT */
+/* PRINT SETTINGS */
 
 @media print {
 
@@ -252,7 +267,7 @@ html, body {
 
     <div class="page" id="page">
 
-        <!-- LOGO -->
+        <!-- GRASSROOTS LOGO -->
 
         <div class="brand">
             <div class="brand-name">grassroots</div>
@@ -264,7 +279,7 @@ html, body {
             Document Validation Details
         </div>
 
-        <!-- AUTHENTICITY -->
+        <!-- DOCUMENT AUTHENTICITY -->
 
         <div class="row first-row">
 
@@ -324,7 +339,7 @@ html, body {
 
         </div>
 
-        <!-- GENERATION DATE -->
+        <!-- DOCUMENT GENERATION DATE -->
 
         <div class="row date-row">
 
@@ -362,6 +377,8 @@ html, body {
 
 </div>
 
+<!-- AUTOMATIC PROPORTIONAL SCALING -->
+
 <script>
 
 function fitPage() {
@@ -379,7 +396,7 @@ function fitPage() {
 
     if (availableWidth <= 0) return;
 
-    /* Corrected scale to match original grssl.com size */
+    /* Preserve the previously approved page size */
 
     const finalScale = Math.min(
         (availableWidth / originalWidth) * 1.05,
@@ -405,17 +422,17 @@ window.addEventListener("load", function() {
 
 });
 
-/* RESIZE */
+/* SCREEN RESIZE */
 
 window.addEventListener("resize", fitPage);
 
-/* MOBILE ROTATION */
+/* MOBILE ORIENTATION CHANGE */
 
 window.addEventListener("orientationchange", function() {
     setTimeout(fitPage, 300);
 });
 
-/* MOBILE VIEWPORT */
+/* MOBILE VIEWPORT CHANGE */
 
 if (window.visualViewport) {
     window.visualViewport.addEventListener("resize", fitPage);
