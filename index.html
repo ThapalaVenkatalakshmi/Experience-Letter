@@ -1,167 +1,187 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Document Validation Details</title>
 
 <style>
+
+/* GLOBAL SETTINGS */
+
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 html, body {
+    margin: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
-    background: #f4f4f4;
+    background: #f2f2f2;
+    color: #333;
 }
 
-/* Full screen background */
-#stage {
+/* MAIN SCREEN */
+
+.stage {
     position: fixed;
     inset: 0;
+
     width: 100%;
     height: 100vh;
     height: 100dvh;
+
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+
     overflow: hidden;
-    padding: 20px 26px;
+
+    /* Match first screenshot side margins */
+    padding: 20px 42px;
 }
 
-/* Main document */
-#page {
-    position: relative;
-    flex: none;
+/* FIXED DOCUMENT */
+
+.page {
     width: 920px;
-    height: 1532px;
+    flex: none;
+
     background: #ffffff;
-    border-radius: 22px;
+
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 5px 22px rgba(0,0,0,0.10);
-    transform: scale(var(--fit-scale, 1));
+
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+
+    transform:
+        translateY(-18px)
+        scale(var(--fit-scale, 1));
+
     transform-origin: center center;
 }
 
-/* Logo section */
+/* GRASSROOTS LOGO */
+
 .brand {
     height: 198px;
-    width: 100%;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     background: #ffffff;
 }
 
-.logo {
-    color: #c8102e;
+.brand-name {
+    color: #eb212f;
+
     font-size: 68px;
-    font-weight: 700;
-    letter-spacing: -3px;
+    font-weight: bold;
+
+    letter-spacing: -4px;
+    white-space: nowrap;
+
+    display: inline-block;
 }
 
-/* Heading */
+/* HEADING */
+
 .heading {
-    height: 113px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: #191919;
     color: #ffffff;
-    font-size: 36px;
-    font-weight: 700;
+
     text-align: center;
-}
 
-/* Details rows */
-.detail-row {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 44% 56%;
-    align-items: center;
-    padding: 28px 44px;
-    border-bottom: 1px solid #e6e6e6;
-    background: #ffffff;
-}
+    padding: 32px 15px;
 
-.row-authenticity {
-    height: 169px;
-}
+    font-size: 36px;
+    font-weight: bold;
 
-.row-type {
-    height: 118px;
-}
-
-.row-owner {
-    height: 119px;
-}
-
-.row-verification {
-    height: 277px;
-    align-items: start;
-    padding-top: 34px;
-}
-
-.row-date {
-    height: 171px;
-}
-
-.label {
-    color: #292929;
-    font-size: 30px;
-    font-weight: 600;
-    line-height: 1.55;
-    padding-right: 20px;
-}
-
-.value {
-    color: #606060;
-    font-size: 30px;
-    font-weight: 400;
-    line-height: 1.8;
-}
-
-.valid-status {
-    display: inline-block;
-    background: #29a66b;
-    color: #ffffff;
-    padding: 12px 25px;
-    border-radius: 8px;
-    font-size: 29px;
-    font-weight: 700;
     white-space: nowrap;
 }
 
-/* Footer */
-.footer {
-    height: 367px;
-    width: 100%;
-    background: #fafafa;
-    display: flex;
+/* DOCUMENT ROWS */
+
+.row {
+    display: grid;
+
+    grid-template-columns: 46% 54%;
+
+    padding: 30px 46px;
+
+    border-bottom: 1px solid #e6e6e6;
+
     align-items: center;
-    justify-content: center;
-    padding: 35px 55px;
-    text-align: center;
+
+    min-height: 116px;
+
+    font-size: 30px;
+    line-height: 1.55;
+
+    background: #ffffff;
+}
+
+.row-label {
+    font-weight: bold;
+}
+
+.row-value {
+    color: #555555;
+}
+
+.first-row {
+    min-height: 170px;
+}
+
+/* VALID DOCUMENT STATUS */
+
+.valid {
+    display: inline-block;
+
+    background: #28a966;
+    color: #ffffff;
+
+    padding: 8px 24px;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.verification {
+    align-items: start;
+}
+
+/* FOOTER */
+
+.footer {
+    background: #fafafa;
     color: #929292;
+
+    text-align: center;
+
+    padding: 48px 35px;
+
     font-size: 25px;
-    line-height: 1.8;
-    font-weight: 400;
+    line-height: 1.7;
 }
 
 .footer strong {
-    color: #666666;
-    font-weight: 700;
+    color: #777777;
 }
 
-/* Keep the same design proportions on every screen */
+/* PRINT SETTINGS */
+
 @media print {
+
     @page {
         size: A4 portrait;
         margin: 10mm;
@@ -174,122 +194,173 @@ html, body {
         background: #ffffff;
     }
 
-    #stage {
+    .stage {
         position: static;
-        width: 100%;
         height: auto;
-        display: block;
+
         padding: 0;
+
+        display: block;
         overflow: visible;
     }
 
-    #page {
+    .page {
         width: 100%;
-        height: auto;
-        transform: none !important;
+
         border-radius: 0;
         box-shadow: none;
+
+        transform: none !important;
+
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
     }
+
+    .brand {
+        height: 130px;
+    }
+
+    .brand-name {
+        font-size: 52px;
+    }
+
+    .heading {
+        font-size: 25px;
+        padding: 20px;
+    }
+
+    .row {
+        padding: 17px 25px;
+        font-size: 18px;
+    }
+
+    .footer {
+        font-size: 15px;
+        padding: 25px;
+    }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<div id="stage">
+<!-- MAIN SCREEN -->
 
-    <div id="page">
+<div class="stage" id="stage">
 
-        <!-- Logo -->
+    <div class="page" id="page">
+
+        <!-- GRASSROOTS LOGO -->
+
         <div class="brand">
-            <div class="logo">grassroots</div>
+            <div class="brand-name">grassroots</div>
         </div>
 
-        <!-- Heading -->
+        <!-- HEADING -->
+
         <div class="heading">
             Document Validation Details
         </div>
 
-        <!-- Document Authenticity -->
-        <div class="detail-row row-authenticity">
-            <div class="label">
-                Document<br>
-                Authenticity
+        <!-- DOCUMENT AUTHENTICITY -->
+
+        <div class="row first-row">
+
+            <div class="row-label">
+                Document<br>Authenticity
             </div>
 
-            <div class="value">
-                <span class="valid-status">Valid Document</span>
+            <div class="row-value">
+                <span class="valid">Valid Document</span>
             </div>
+
         </div>
 
-        <!-- Document Type -->
-        <div class="detail-row row-type">
-            <div class="label">
+        <!-- DOCUMENT TYPE -->
+
+        <div class="row">
+
+            <div class="row-label">
                 Document Type
             </div>
 
-            <div class="value">
+            <div class="row-value">
                 Experience Letter
             </div>
+
         </div>
 
-        <!-- Document Owner -->
-        <div class="detail-row row-owner">
-            <div class="label">
+        <!-- DOCUMENT OWNER -->
+
+        <div class="row">
+
+            <div class="row-label">
                 Document Owner
             </div>
 
-            <div class="value">
+            <div class="row-value">
                 Thapala Venkatalakshmi
             </div>
+
         </div>
 
-        <!-- Verification Details -->
-        <div class="detail-row row-verification">
-            <div class="label">
+        <!-- VERIFICATION DETAILS -->
+
+        <div class="row verification">
+
+            <div class="row-label">
                 Verification Details
             </div>
 
-            <div class="value">
+            <div class="row-value">
                 Joined on 2024-06-25;<br>
                 Relieved on 2026-09-06<br>
                 with designation as<br>
                 Process Executive
             </div>
+
         </div>
 
-        <!-- Document Generation Date -->
-        <div class="detail-row row-date">
-            <div class="label">
-                Document<br>
-                Generation Date
+        <!-- GENERATION DATE -->
+
+        <div class="row">
+
+            <div class="row-label">
+                Document<br>Generation Date
             </div>
 
-            <div class="value">
+            <div class="row-value">
                 2026-10-22 16:08:12 IST
             </div>
+
         </div>
 
-        <!-- Footer -->
+        <!-- FOOTER -->
+
         <div class="footer">
-            <div>
-                ** Cross check the above Document Generation Date with<br>
-                the download date mentioned in the document above the<br>
-                QR Code.<br>
 
-                This verification result will be published only by<br>
+            ** Cross check the above Document Generation Date with<br>
+            the download date mentioned in the document above the<br>
+            QR Code.<br>
 
-                <strong>https://grssl.com.</strong>
-                Cross verify the URL domain generating<br>
-                the verification result.
-            </div>
+            This verification result will be published only by<br>
+
+            <strong>https://grssl.com</strong>.
+            Cross verify the URL domain generating<br>
+            the verification result.
+
         </div>
 
     </div>
 
 </div>
 
+<!-- AUTOMATIC PROPORTIONAL SCALING -->
+
 <script>
+
 function fitPage() {
 
     const stage = document.getElementById("stage");
@@ -298,30 +369,43 @@ function fitPage() {
     if (!stage || !page) return;
 
     /* Reset scale before measuring */
+
     page.style.setProperty("--fit-scale", "1");
+
+    /* Original document dimensions */
 
     const originalWidth = page.offsetWidth;
     const originalHeight = page.offsetHeight;
 
-    const availableWidth = stage.clientWidth - 52;
+    /* Available screen dimensions */
+
+    const availableWidth = stage.clientWidth - 84;
     const availableHeight = stage.clientHeight - 40;
 
     if (!originalWidth || !originalHeight) return;
 
+    /* Calculate proportional scaling */
+
     const scaleX = availableWidth / originalWidth;
     const scaleY = availableHeight / originalHeight;
 
-    /* Same proportions, no stretching */
+    /* Fit without changing document proportions */
+
     const finalScale = Math.min(
         scaleX,
         scaleY,
         1
     );
 
-    page.style.setProperty("--fit-scale", finalScale);
+    page.style.setProperty(
+        "--fit-scale",
+        finalScale
+    );
+
 }
 
-/* Initial loading */
+/* INITIAL LOAD */
+
 window.addEventListener("load", function() {
 
     fitPage();
@@ -329,22 +413,34 @@ window.addEventListener("load", function() {
     if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(fitPage);
     }
+
 });
 
-/* Screen resize */
+/* SCREEN RESIZE */
+
 window.addEventListener("resize", fitPage);
 
-/* Phone rotation */
+/* MOBILE ORIENTATION CHANGE */
+
 window.addEventListener("orientationchange", function() {
+
     setTimeout(fitPage, 300);
+
 });
 
-/* Mobile browser viewport changes */
+/* MOBILE VIEWPORT CHANGE */
+
 if (window.visualViewport) {
-    window.visualViewport.addEventListener("resize", fitPage);
+
+    window.visualViewport.addEventListener(
+        "resize",
+        fitPage
+    );
+
 }
 
-/* Observe screen and document size changes */
+/* CONTENT SIZE OBSERVER */
+
 if (window.ResizeObserver) {
 
     const observer = new ResizeObserver(function() {
@@ -353,11 +449,18 @@ if (window.ResizeObserver) {
 
     window.addEventListener("load", function() {
 
-        observer.observe(document.getElementById("stage"));
-        observer.observe(document.getElementById("page"));
+        observer.observe(
+            document.getElementById("stage")
+        );
+
+        observer.observe(
+            document.getElementById("page")
+        );
 
     });
+
 }
+
 </script>
 
 </body>
