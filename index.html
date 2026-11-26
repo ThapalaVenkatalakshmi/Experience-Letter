@@ -32,14 +32,18 @@ html, body {
 .stage {
     position: fixed;
     inset: 0;
+
     width: 100%;
     height: 100vh;
     height: 100dvh;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     overflow: hidden;
-    padding: 0;
+
+    padding: 20px 26px;
 }
 
 /* FIXED DOCUMENT */
@@ -47,9 +51,12 @@ html, body {
 .page {
     width: 920px;
     flex: none;
+
     background: white;
+
     border-radius: 20px;
     overflow: hidden;
+
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
 
     transform: scale(var(--fit-scale, 1));
@@ -60,18 +67,23 @@ html, body {
 
 .brand {
     height: 198px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     background: white;
 }
 
 .brand-name {
     color: #df1f32;
+
     font-size: 68px;
     font-weight: bold;
+
     letter-spacing: -4px;
     white-space: nowrap;
+
     display: inline-block;
 }
 
@@ -80,10 +92,14 @@ html, body {
 .heading {
     background: #191919;
     color: white;
+
     text-align: center;
+
     padding: 32px 15px;
+
     font-size: 36px;
     font-weight: bold;
+
     white-space: nowrap;
 }
 
@@ -91,11 +107,17 @@ html, body {
 
 .row {
     display: grid;
+
     grid-template-columns: 46% 54%;
+
     padding: 30px 46px;
+
     border-bottom: 1px solid #e6e6e6;
+
     align-items: center;
+
     min-height: 116px;
+
     font-size: 30px;
     line-height: 1.55;
 }
@@ -106,7 +128,6 @@ html, body {
 
 .row-value {
     color: #555;
-    overflow-wrap: normal;
 }
 
 .first-row {
@@ -117,10 +138,14 @@ html, body {
 
 .valid {
     display: inline-block;
+
     background: #28a966;
     color: white;
+
     padding: 8px 24px;
+
     border-radius: 10px;
+
     font-weight: bold;
     white-space: nowrap;
 }
@@ -134,8 +159,11 @@ html, body {
 .footer {
     background: #fafafa;
     color: #929292;
+
     text-align: center;
+
     padding: 48px 35px;
+
     font-size: 25px;
     line-height: 1.7;
 }
@@ -163,15 +191,21 @@ html, body {
     .stage {
         position: static;
         height: auto;
+
+        padding: 0;
+
         display: block;
         overflow: visible;
     }
 
     .page {
         width: 100%;
+
         border-radius: 0;
         box-shadow: none;
+
         transform: none !important;
+
         print-color-adjust: exact;
         -webkit-print-color-adjust: exact;
     }
@@ -278,7 +312,7 @@ html, body {
             Joined on 2024-06-25;<br>
             Relieved on 2026-09-06<br>
             with designation as<br>
-            MIS Executive
+            Process Executive
         </div>
 
     </div>
@@ -297,7 +331,10 @@ html, body {
 
     </div>
 
-   <div class="footer">
+    <!-- FOOTER -->
+
+    <div class="footer">
+
         ** Cross check the above Document Generation Date with<br>
         the download date mentioned in the document above the<br>
         QR Code.<br>
@@ -307,7 +344,6 @@ html, body {
         <strong>https://grssl.com</strong>.
         Cross verify the URL domain generating<br>
         the verification result.
-
 
     </div>
 
@@ -325,35 +361,36 @@ function fitPage() {
 
     if (!stage || !page) return;
 
-    // Reset previous scale
+    // Reset previous scaling
 
     page.style.setProperty("--fit-scale", "1");
 
-    // Get original document dimensions
+    // Original document dimensions
 
     const originalWidth = page.offsetWidth;
     const originalHeight = page.offsetHeight;
 
-    // Get available screen dimensions
+    // Available screen dimensions
 
-    const availableWidth = stage.clientWidth;
-    const availableHeight = stage.clientHeight;
+    const availableWidth = stage.clientWidth - 52;
+    const availableHeight = stage.clientHeight - 40;
 
     if (!originalWidth || !originalHeight) return;
 
-    // Calculate width and height scale
+    // Calculate proportional scaling
 
     const scaleX = availableWidth / originalWidth;
     const scaleY = availableHeight / originalHeight;
 
-    // Select the scale that fits the entire document
+    // Fit complete document
 
     const finalScale = Math.min(
         scaleX,
-        scaleY
+        scaleY,
+        1
     );
 
-    // Apply proportional scaling
+    // Apply equal proportional scaling
 
     page.style.setProperty(
         "--fit-scale",
@@ -385,6 +422,15 @@ window.addEventListener("orientationchange", () => {
     setTimeout(fitPage, 300);
 
 });
+
+// MOBILE VIEWPORT CHANGE
+
+if (window.visualViewport) {
+    window.visualViewport.addEventListener(
+        "resize",
+        fitPage
+    );
+}
 
 // CONTENT SIZE OBSERVER
 
